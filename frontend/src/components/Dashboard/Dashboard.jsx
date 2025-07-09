@@ -56,10 +56,10 @@ const Dashboard = () => {
 
       const [tasksResponse, eventsResponse] = await Promise.all([
         axios.get(
-          `https://sync-project.glitch.me/api/tasks/team/${currentTeam._id}`
+          `https://sync-next.onrender.com/api/tasks/team/${currentTeam._id}`
         ),
         axios.get(
-          `https://sync-project.glitch.me/api/calendar/team/${currentTeam._id}`
+          `https://sync-next.onrender.com/api/calendar/team/${currentTeam._id}`
         ),
       ]);
 
@@ -109,7 +109,7 @@ const Dashboard = () => {
     try {
       console.log("🔍 Searching users with term:", term);
       const response = await axios.get(
-        `https://sync-project.glitch.me/api/users?search=${term}`
+        `https://sync-next.onrender.com/api/users?search=${term}`
       );
       console.log("📋 Search results:", response.data);
 
@@ -152,7 +152,7 @@ const Dashboard = () => {
       });
 
       const response = await axios.post(
-        `https://sync-project.glitch.me/api/users/teams/${currentTeam._id}/invite`,
+        `https://sync-next.onrender.com/api/users/teams/${currentTeam._id}/invite`,
         {
           userId: userId,
           message: `You've been invited to join ${currentTeam.name}`,
@@ -164,7 +164,7 @@ const Dashboard = () => {
       // Create notification for invited user
       try {
         const notificationResponse = await axios.post(
-          "https://sync-project.glitch.me/api/notifications",
+          "https://sync-next.onrender.com/api/notifications",
           {
             userId: userId,
             title: "Team Invitation Sent",

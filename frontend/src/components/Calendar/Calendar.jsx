@@ -80,7 +80,7 @@ const Calendar = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `https://sync-project.glitch.me/api/calendar/team/${currentTeam._id}`
+        `https:////sync-next.onrender.com/api/calendar/team/${currentTeam._id}`
       );
       setEvents(response.data);
     } catch (error) {
@@ -100,7 +100,7 @@ const Calendar = () => {
 
     try {
       const response = await axios.post(
-        "https://sync-project.glitch.me/api/calendar",
+        "https:////sync-next.onrender.com/api/calendar",
         {
           ...eventData,
           teamId: currentTeam._id,
@@ -128,7 +128,7 @@ const Calendar = () => {
   const handleUpdateEvent = async (eventId, eventData) => {
     try {
       const response = await axios.put(
-        `https://sync-project.glitch.me/api/calendar/${eventId}`,
+        `https:////sync-next.onrender.com/api/calendar/${eventId}`,
         eventData
       );
       setEvents((prev) =>
@@ -155,7 +155,7 @@ const Calendar = () => {
   const handleDeleteEvent = async (eventId) => {
     try {
       await axios.delete(
-        `https://sync-project.glitch.me/api/calendar/${eventId}`
+        `https:////sync-next.onrender.com/api/calendar/${eventId}`
       );
       setEvents((prev) => prev.filter((event) => event._id !== eventId));
 

@@ -29,7 +29,7 @@ export const SocketProvider = ({ children }) => {
         user.username
       );
 
-      const newSocket = io("https://sync-project.glitch.me/", {
+      const newSocket = io("https://sync-next.onrender.com/", {
         transports: ["websocket", "polling"],
         timeout: 20000,
         forceNew: true,

@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
       if (token) {
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         const response = await axios.get(
-          "https://sync-project.glitch.me/api/auth/me"
+          "https://sync-next.onrender.com/api/auth/me"
         );
         setUser(response.data);
         // Fetch teams after setting user
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
   const fetchTeams = async () => {
     try {
       const response = await axios.get(
-        "https://sync-project.glitch.me/api/users/teams"
+        "https://sync-next.onrender.com/api/users/teams"
       );
       const userTeams = response.data || [];
       setTeams(userTeams);
@@ -93,7 +93,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const response = await axios.post(
-        "https://sync-project.glitch.me/api/auth/login",
+        "https://sync-next.onrender.com/api/auth/login",
         {
           email,
           password,
@@ -120,7 +120,7 @@ export const AuthProvider = ({ children }) => {
   const register = async (userData) => {
     try {
       const response = await axios.post(
-        "https://sync-project.glitch.me/api/auth/register",
+        "https://sync-next.onrender.com/api/auth/register",
         userData
       );
       const { token, user } = response.data;
@@ -142,7 +142,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post("https://sync-project.glitch.me/api/auth/logout");
+      await axios.post("https://sync-next.onrender.com/api/auth/logout");
     } catch (error) {
       console.error("Logout error:", error);
     } finally {
@@ -158,7 +158,7 @@ export const AuthProvider = ({ children }) => {
   const createTeam = async (teamData) => {
     try {
       const response = await axios.post(
-        "https://sync-project.glitch.me/api/users/teams",
+        "https://sync-next.onrender.com/api/users/teams",
         teamData
       );
       const newTeam = response.data;

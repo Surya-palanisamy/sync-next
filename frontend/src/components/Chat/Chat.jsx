@@ -146,7 +146,7 @@ const Chat = () => {
       setLoading(true);
       console.log("📨 Fetching messages for team:", currentTeam.name);
       const response = await axios.get(
-        `https://sync-project.glitch.me/api/chat/team/${currentTeam._id}`
+        `https://sync-next.onrender.com/api/chat/team/${currentTeam._id}`
       );
       console.log("✅ Messages fetched:", response.data.length);
       setMessages(response.data);
@@ -199,7 +199,7 @@ const Chat = () => {
 
     try {
       const response = await axios.get(
-        `https://sync-project.glitch.me/api/users?search=${term}`
+        `https://sync-next.onrender.com/api/users?search=${term}`
       );
       const filteredUsers = response.data.filter(
         (searchUser) =>
@@ -225,7 +225,7 @@ const Chat = () => {
     try {
       setInviting(true);
       const response = await axios.post(
-        `https://sync-project.glitch.me/api/users/teams/${currentTeam._id}/invite`,
+        `https://sync-next.onrender.com/api/users/teams/${currentTeam._id}/invite`,
         {
           userId: userId,
           message: `You've been invited to join ${currentTeam.name}`,
@@ -271,7 +271,7 @@ const Chat = () => {
 
     try {
       const response = await axios.post(
-        "https://sync-project.glitch.me/api/chat/upload",
+        "https://sync-next.onrender.com/api/chat/upload",
         formData,
         {
           headers: {
@@ -294,7 +294,7 @@ const Chat = () => {
   const handleDownload = async (fileUrl, fileName) => {
     try {
       // Use the download endpoint for better file handling
-      const downloadUrl = `https://sync-project.glitch.me/api/chat/download/${fileName
+      const downloadUrl = `https://sync-next.onrender.com/api/chat/download/${fileName
         .split("/")
         .pop()}`;
 
@@ -334,7 +334,7 @@ const Chat = () => {
   };
 
   const copyImageUrl = (imageUrl) => {
-    const fullUrl = `https://sync-project.glitch.me${imageUrl}`;
+    const fullUrl = `https://sync-next.onrender.com${imageUrl}`;
     navigator.clipboard.writeText(fullUrl);
     toast.success("Image URL copied to clipboard!");
   };
@@ -411,7 +411,7 @@ const Chat = () => {
 
       // Save message to database first
       const response = await axios.post(
-        "https://sync-project.glitch.me/api/chat",
+        "https://sync-next.onrender.com/api/chat",
         messageData
       );
       console.log("✅ Message saved to database:", response.data._id);
@@ -546,7 +546,7 @@ const Chat = () => {
           </button>
           <button
             onClick={() =>
-              window.open(`https://sync-project.glitch.me${imageUrl}`, "_blank")
+              window.open(`https://sync-next.onrender.com${imageUrl}`, "_blank")
             }
             className="p-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors backdrop-blur-sm"
             title="Open in new tab"
@@ -569,7 +569,7 @@ const Chat = () => {
           </button>
         </div>
         <img
-          src={`https://sync-project.glitch.me${imageUrl}`}
+          src={`https://sync-next.onrender.com${imageUrl}`}
           alt={fileName}
           className="max-w-full max-h-full object-contain rounded-lg"
           onClick={onClose}
@@ -775,7 +775,7 @@ const Chat = () => {
                       {message.messageType === "image" && message.fileUrl && (
                         <div className="mb-3 relative group/image">
                           <img
-                            src={`https://sync-project.glitch.me${message.fileUrl}`}
+                            src={`https://sync-next.onrender.com${message.fileUrl}`}
                             alt={message.fileName}
                             className="max-w-full h-auto rounded-xl shadow-md cursor-pointer transition-transform hover:scale-105"
                             style={{ maxHeight: "300px", minWidth: "200px" }}

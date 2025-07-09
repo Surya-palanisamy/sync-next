@@ -67,7 +67,7 @@ const Header = ({ onMenuClick }) => {
   const fetchNotifications = async () => {
     try {
       const response = await axios.get(
-        "https://sync-project.glitch.me/api/notifications"
+        "https://sync-next.onrender.com/api/notifications"
       );
       setNotifications(response.data);
     } catch (error) {
@@ -78,7 +78,7 @@ const Header = ({ onMenuClick }) => {
   const fetchInvitations = async () => {
     try {
       const response = await axios.get(
-        "https://sync-project.glitch.me/api/invitations?status=pending"
+        "https://sync-next.onrender.com/api/invitations?status=pending"
       );
       setInvitations(response.data);
     } catch (error) {
@@ -90,7 +90,7 @@ const Header = ({ onMenuClick }) => {
     try {
       console.log("✅ Accepting invitation:", invitationId);
       const response = await axios.put(
-        `https://sync-project.glitch.me/api/invitations/${invitationId}/accept`
+        `https://sync-next.onrender.com/api/invitations/${invitationId}/accept`
       );
 
       toast.success("Invitation accepted!", {
@@ -125,7 +125,7 @@ const Header = ({ onMenuClick }) => {
   const handleDeclineInvitation = async (invitationId) => {
     try {
       await axios.put(
-        `https://sync-project.glitch.me/api/invitations/${invitationId}/decline`
+        `https://sync-next.onrender.com/api/invitations/${invitationId}/decline`
       );
       toast.success("Invitation declined");
       fetchInvitations();
@@ -138,7 +138,7 @@ const Header = ({ onMenuClick }) => {
   const markAsRead = async (notificationId) => {
     try {
       await axios.put(
-        `https://sync-project.glitch.me/api/notifications/${notificationId}/read`
+        `https://sync-next.onrender.com/api/notifications/${notificationId}/read`
       );
       setNotifications((prev) =>
         prev.map((notification) =>
@@ -156,7 +156,7 @@ const Header = ({ onMenuClick }) => {
   const markAllAsRead = async () => {
     try {
       await axios.put(
-        "https://sync-project.glitch.me/api/notifications/read-all"
+        "https://sync-next.onrender.com/api/notifications/read-all"
       );
       setNotifications((prev) =>
         prev.map((notification) => ({ ...notification, read: true }))
@@ -171,7 +171,7 @@ const Header = ({ onMenuClick }) => {
   const removeNotification = async (notificationId) => {
     try {
       await axios.delete(
-        `https://sync-project.glitch.me/api/notifications/${notificationId}`
+        `https://sync-next.onrender.com/api/notifications/${notificationId}`
       );
       setNotifications((prev) =>
         prev.filter((notification) => notification._id !== notificationId)

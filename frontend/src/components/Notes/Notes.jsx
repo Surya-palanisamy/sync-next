@@ -71,7 +71,7 @@ const Notes = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `https://sync-project.glitch.me/api/notes/team/${currentTeam._id}`
+        `https://sync-next.onrender.com/api/notes/team/${currentTeam._id}`
       );
       setNotes(response.data);
     } catch (error) {
@@ -91,7 +91,7 @@ const Notes = () => {
 
     try {
       const response = await axios.post(
-        "https://sync-project.glitch.me/api/notes",
+        "https://sync-next.onrender.com/api/notes",
         {
           ...noteData,
           teamId: currentTeam._id,
@@ -112,7 +112,7 @@ const Notes = () => {
   const handleUpdateNote = async (noteId, noteData) => {
     try {
       const response = await axios.put(
-        `https://sync-project.glitch.me/api/notes/${noteId}`,
+        `https://sync-next.onrender.com/api/notes/${noteId}`,
         noteData
       );
       setNotes((prev) =>
@@ -133,7 +133,7 @@ const Notes = () => {
     if (!window.confirm("Are you sure you want to delete this note?")) return;
 
     try {
-      await axios.delete(`https://sync-project.glitch.me/api/notes/${noteId}`);
+      await axios.delete(`https://sync-next.onrender.com/api/notes/${noteId}`);
       setNotes((prev) => prev.filter((note) => note._id !== noteId));
 
       // Broadcast deletion via socket

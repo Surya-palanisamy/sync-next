@@ -114,7 +114,7 @@ const Tasks = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `https://sync-project.glitch.me/api/tasks/team/${currentTeam._id}`
+        `https://sync-next.onrender.com/api/tasks/team/${currentTeam._id}`
       );
       setTasks(response.data);
     } catch (error) {
@@ -152,7 +152,7 @@ const Tasks = () => {
 
     try {
       const response = await axios.put(
-        `https://sync-project.glitch.me/api/tasks/${draggableId}`,
+        `https://sync-next.onrender.com/api/tasks/${draggableId}`,
         {
           status: newStatus,
         }
@@ -189,7 +189,7 @@ const Tasks = () => {
 
     try {
       const response = await axios.post(
-        "https://sync-project.glitch.me/api/tasks",
+        "https://sync-next.onrender.com/api/tasks",
         {
           ...taskData,
           teamId: currentTeam._id,
@@ -218,7 +218,7 @@ const Tasks = () => {
   const handleUpdateTask = async (taskId, taskData) => {
     try {
       const response = await axios.put(
-        `https://sync-project.glitch.me/api/tasks/${taskId}`,
+        `https://sync-next.onrender.com/api/tasks/${taskId}`,
         taskData
       );
 
@@ -245,7 +245,7 @@ const Tasks = () => {
 
   const handleDeleteTask = async (taskId) => {
     try {
-      await axios.delete(`https://sync-project.glitch.me/api/tasks/${taskId}`);
+      await axios.delete(`https://sync-next.onrender.com/api/tasks/${taskId}`);
       setTasks((prev) => prev.filter((task) => task._id !== taskId));
 
       // Broadcast deletion via socket
